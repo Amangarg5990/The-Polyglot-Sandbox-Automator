@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandboxed Remote Code Executor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+  <div class="background-decor blur-1"></div>
+  <div class="background-decor blur-2"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <div class="logo-text">
+        <h1>Antigravity Sandbox</h1>
+        <p>Remote Code Execution Engine</p>
+      </div>
+    </div>
+    <div class="system-status" id="systemStatus">
+      <span class="status-dot"></span>
+      <span class="status-label">Checking System Status...</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="editor-section">
+      <div class="card editor-card">
+        <div class="card-header">
+          <div class="controls-left">
+            <span class="window-dot red"></span>
+            <span class="window-dot yellow"></span>
+            <span class="window-dot green"></span>
+            <div class="language-selector">
+              <button class="lang-btn active" data-lang="python">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+                Python 3.12
+              </button>
+              <button class="lang-btn" data-lang="javascript">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" />
+                Node.js 20
+              </button>
+            </div>
+          </div>
+          <div class="controls-right">
+            <button id="runBtn" class="btn btn-primary">
+              <svg class="run-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Run Code
+            </button>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="line-numbers" id="lineNumbers"></div>
+          <textarea id="codeEditor" spellcheck="false" autocomplete="off" placeholder="Write code here..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="console-section">
+      <div class="card console-card">
+        <div class="card-header">
+          <h3>Execution Output</h3>
+          <div class="metrics" id="metrics">
+            <div class="metric-item hidden" id="timeMetric">
+              <span class="metric-label">Duration:</span>
+              <span class="metric-value" id="executionTime">-</span>
+            </div>
+            <div class="metric-badge hidden" id="cacheBadge">
+              <span class="badge-icon">💾</span>
+              <span class="badge-text">Redis Cached</span>
+            </div>
+          </div>
+        </div>
+        <div class="console-body" id="consoleOutput">
+          <div class="empty-state">
+            <div class="empty-icon">📂</div>
+            <p>Click "Run Code" to compile and execute your script inside the Docker sandbox.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>Secure Execution Sandboxed: CPU Limit 0.5 Cores | Memory Limit 256MB | Read-only mounts</p>
+      <p class="git-info">DevOps Infrastructure Playground &bull; Redis Execution Caching</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
