@@ -1,6 +1,6 @@
-# ⚡ Antigravity Sandbox — Remote Code Execution Engine
+# The Polyglot Sandbox Automator — Remote Code Execution Engine
 
-![Antigravity Sandbox Banner](./public/banner.png)
+![Polyglot Sandbox Banner](./public/banner.png)
 
 A lightweight, high-performance, and secure remote code execution service. It evaluates untrusted user code (Python & JavaScript) inside ephemeral, resource-constrained, and non-root Docker sandboxes, leveraging Redis to cache identical executions for sub-millisecond response latency.
 
@@ -12,21 +12,6 @@ This repository includes a TypeScript API, isolated sandboxed environments, an a
 
 The workflow of a user submission is shown below:
 
-```mermaid
-graph TD
-    Client[Web Client / Curl] -->|POST /execute| API[TypeScript Express API]
-    API -->|1. Generate Cache Key| Hash[SHA-256 Hash of Code]
-    Hash -->|2. Check Cache| Redis{Redis Cache}
-    Redis -->|Hit (Return Saved Output)| Client
-    Redis -->|Miss| Engine[Sandbox Dispatcher]
-    Engine -->|3. Write script to temp file| SandboxDir[/tmp/sandbox/sandbox_*.js | .py]
-    Engine -->|4. Invoke Docker run with resource limits| Docker[Docker Runner Sandbox]
-    Docker -->|5. Run code as 'runner' user| Exec[NodeJS / Python Executed]
-    Exec -->|6. Retrieve Stdout/Stderr/ExitCode| Engine
-    Engine -->|7. Cleanup temp file| SandboxDir
-    Engine -->|8. Cache result in Redis| Redis
-    Engine -->|9. Send response| Client
-```
 
 ### Sandbox Protections & Constraints:
 * **User Isolation:** Executed entirely under the non-root `runner` user.
