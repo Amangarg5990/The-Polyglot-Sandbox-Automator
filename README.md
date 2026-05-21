@@ -1,6 +1,6 @@
 # The Polyglot Sandbox Automator — Remote Code Execution Engine
 
-![Polyglot Sandbox Banner](./public/banner.png)
+![Polyglot Sandbox Banner](./public/banner1.png)
 
 A lightweight, high-performance, and secure remote code execution service. It evaluates untrusted user code (Python & JavaScript) inside ephemeral, resource-constrained, and non-root Docker sandboxes, leveraging Redis to cache identical executions for sub-millisecond response latency.
 
